@@ -5,6 +5,7 @@ import removeMarkdown from 'remove-markdown';
 import * as child_process from 'child_process';
 import { ExecOptions, spawn } from 'child_process';
 import { rootDir } from '../config/paths';
+import { githubRepositoryOwner } from '../config/environments';
 import path from 'path';
 
 export function download(url: string, localPath: string) {
@@ -25,7 +26,7 @@ export async function pull(dir: string, repo: string, commit = 'origin/master') 
       stderr: process.stderr,
     });
   } else {
-    await execute(`git clone https://github.com/algorithm-visualizer/${repo}.git ${dir}`, {
+    await execute(`git clone https://github.com/${githubRepositoryOwner}/${repo}.git ${dir}`, {
       stdout: process.stdout,
       stderr: process.stderr,
     });

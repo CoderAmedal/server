@@ -22,6 +22,7 @@ const {
 
   GITHUB_CLIENT_ID,
   GITHUB_CLIENT_SECRET,
+  GITHUB_REPOSITORY_OWNER,
 } = process.env as {
   [key: string]: string,
 };
@@ -75,3 +76,4 @@ if (isEnabled(CREDENTIALS_ENABLED)) {
 
 export const githubClientId = GITHUB_CLIENT_ID;
 export const githubClientSecret = GITHUB_CLIENT_SECRET;
+export const githubRepositoryOwner = GITHUB_REPOSITORY_OWNER || 'algorithm-visualizer';
