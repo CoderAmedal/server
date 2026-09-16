@@ -1,0 +1,3 @@
+[submodule "src/tracers/rs/algorithm_visualizer"]
+	path = src/tracers/rs/algorithm_visualizer
+	url = ssh://git@192.168.31.3:2222/AMEDAL_LABS/tracers.rs.git
