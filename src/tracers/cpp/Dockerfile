@@ -13,5 +13,6 @@ RUN curl --create-dirs -o /usr/local/include/nlohmann/json.hpp -L "https://githu
  && cmake .. \
  && make install
 
-CMD g++ Main.cpp -o Main -O2 -std=c++11 -lcurl \
+CMD sed -E 's/Tracer::delay[[:space:]]*\([[:space:]]*\)/Tracer::delay(__LINE__ - 1)/g' Main.cpp > _Main.cpp \
+ && g++ _Main.cpp -o Main -O2 -std=c++11 -lcurl \
  && ./Main

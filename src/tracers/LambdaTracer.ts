@@ -14,13 +14,18 @@ export class LambdaTracer extends Tracer {
   async build(release: Release) {
   }
 
+  protected preprocess(code: string) {
+    return code;
+  }
+
   route(router: express.Router) {
     router.post(`/${this.lang}`, (req, res, next) => {
       const {code} = req.body;
+      const processed = this.preprocess(code);
       LambdaTracer.lambda.invoke({
         FunctionName: `extractor-${this.lang}`,
         InvocationType: 'RequestResponse',
-        Payload: JSON.stringify(code),
+        Payload: JSON.stringify(processed),
       }, function (err, data) {
         if (err) return next(err);
         if (typeof data.Payload !== 'string') return next(new Error('Unexpected Payload Type'));

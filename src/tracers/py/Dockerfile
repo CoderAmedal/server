@@ -14,4 +14,6 @@ RUN apt-get update \
 
 ENV PYTHONPATH=/app
 
-CMD ["python", "Main.py"]
+COPY run.py /app/run.py
+
+CMD ["python", "/app/run.py"]
