@@ -27,7 +27,6 @@
     "tslint": "^5.16.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.814.0",
     "axios": "^0.21.2",
     "body-parser": "^1.18.2",
     "compression": "^1.7.3",
