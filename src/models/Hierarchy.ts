@@ -29,6 +29,10 @@ export class Hierarchy {
   }
 
   async update(commit?: string) {
+    if (process.env.ALGORITHMS_UPDATE_ENABLED === '0') {
+      this.refresh();
+      return;
+    }
     await pull(this.path, 'algorithms', commit);
     this.refresh();
   };
